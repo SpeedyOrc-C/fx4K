@@ -1,3 +1,16 @@
+# VSCode config
+.vscode
+# macOS finder preference
+.DS_STORE
+
+# Casio debug folder
+addin/Debug
+# Casio simulator memory
+addin/INIT
+addin/SDCard
+# Release file
+addin/fx4K.G1A
+
 # Prerequisites
 *.d
 
