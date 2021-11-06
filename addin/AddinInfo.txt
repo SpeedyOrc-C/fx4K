@@ -5,7 +5,7 @@
 [BINDATA]    : "FXADDINror.bin"
 [DISPNAME]   : "fx4K"
 [APPNAME]    : "@FX4K"
-[VERSION]    : "00.01.0000"
+[VERSION]    : "00.02.0000"
 [APL_ICON]   : "MainIcon.bmp"
 [MODULE_NUM] : 0
 [MOD1_TITLE] : "fx4K"

@@ -9,22 +9,22 @@ void draw_key_press_effect(unsigned char *key_state)
         ML_rectangle(
             1, 64 - COLUMN_HEIGHT,
             COLUMN_WIDTH, 62,
-            2, ML_XOR, ML_WHITE);
+            2, ML_XOR, ML_TRANSPARENT);
     if (key_state[1])
         ML_rectangle(
             1 + COLUMN_WIDTH, 64 - COLUMN_HEIGHT,
             COLUMN_WIDTH * 2, 62,
-            2, ML_XOR, ML_WHITE);
+            2, ML_XOR, ML_TRANSPARENT);
     if (key_state[2])
         ML_rectangle(
             1 + COLUMN_WIDTH * 2, 64 - COLUMN_HEIGHT,
             COLUMN_WIDTH * 3, 62,
-            2, ML_XOR, ML_WHITE);
+            2, ML_XOR, ML_TRANSPARENT);
     if (key_state[3])
         ML_rectangle(
             1 + COLUMN_WIDTH * 3, 64 - COLUMN_HEIGHT,
             COLUMN_WIDTH * 4, 62,
-            2, ML_XOR, ML_WHITE);
+            2, ML_XOR, ML_TRANSPARENT);
 }
 
 

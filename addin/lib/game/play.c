@@ -6,34 +6,69 @@
 #include "play.h"
 #include "graphics.h"
 
+unsigned char buffer[32];
+unsigned int key;
+
 unsigned char wait_frame;
 short column_start_ptr[4], column_now_ptr[4];
 short time;
 unsigned char key_state[4];
-unsigned short miss_count, good_count, perfect_count;
+unsigned short miss_count, good_count, perfect_count, combo, max_combo;
+float accuracy;
 short VISIBLE = 40;
 
-unsigned int select_chart_speed()
+void select_speed()
 {
-    unsigned int key;
-
     ML_clear_vram();
 
-    locate(6, 3);
-    Print((unsigned char*)"Chart Speed");
-    locate(6, 5);
-    Print((unsigned char*)"1 2 [3] 4 5");
+    locate(9, 2);
+    Print((unsigned char *)"Speed");
+    locate(7, 3);
+    Print((unsigned char *)"[1] 2s");
+    locate(7, 4);
+    Print((unsigned char *)"[2] 1.5s");
+    locate(7, 5);
+    Print((unsigned char *)"[3] 1s");
+    locate(7, 6);
+    Print((unsigned char *)"[4] 0.75s");
+    locate(7, 7);
+    Print((unsigned char *)"[5] 0.5s");
+
+    ML_display_vram();
 
     while (1)
     {
         GetKey(&key);
+        if (KEY_CHAR_1 <= key && key <= KEY_CHAR_5)
+        {
+            switch (key)
+            {
+            case KEY_CHAR_1:
+                VISIBLE = 80;
+                break;
+            case KEY_CHAR_2:
+                VISIBLE = 60;
+                break;
+            case KEY_CHAR_3:
+                VISIBLE = 40;
+                break;
+            case KEY_CHAR_4:
+                VISIBLE = 30;
+                break;
+            case KEY_CHAR_5:
+                VISIBLE = 20;
+                break;
+            default:
+                break;
+            }
+            break;
+        }
     }
 }
 
-
 unsigned int pause()
 {
-    unsigned int key, i, j;
+    unsigned int i, j;
 
     for (i = 0; i <= 127; i++)
         for (j = 0; j <= 63; j++)
@@ -56,11 +91,51 @@ unsigned int pause()
     }
 }
 
+void display_result(unsigned char *chart_title)
+{
+    accuracy = 100 * ((float)perfect_count + (float)good_count / 2) /
+               (float)(perfect_count + good_count + miss_count);
+
+    ML_clear_vram();
+
+    locate(1, 1);
+    Print(chart_title);
+    locate(1, 2);
+    Print(&chart_title[21]);
+
+    locate(1, 3);
+    Print((unsigned char*)"---------------------");
+
+    locate(1, 4);
+    sprintf((char *)buffer, "ACCURACY : %.2f%%", accuracy);
+    Print(buffer);
+    locate(1, 5);
+    sprintf((char *)buffer, "MAX COMBO: %u", max_combo);
+    Print(buffer);
+    locate(1, 6);
+    sprintf((char *)buffer, "PERFECT  : %u", perfect_count);
+    Print(buffer);
+    locate(1, 7);
+    sprintf((char *)buffer, "GOOD     : %u", good_count);
+    Print(buffer);
+    locate(1, 8);
+    sprintf((char *)buffer, "MISS     : %u", miss_count);
+    Print(buffer);
+
+    ML_display_vram();
+
+    while (1)
+    {
+        GetKey(&key);
+        if (key == KEY_CTRL_EXE)
+            break;
+    }
+}
+
 void frame_timer()
 {
     wait_frame = 0;
 }
-
 
 void note_state_machine(struct Note notes[2000])
 {
@@ -85,6 +160,7 @@ void note_state_machine(struct Note notes[2000])
                     if (n + PERFECT + GOOD < time)
                     {
                         notes[column_now_ptr[i]].score = SCORE_MISS;
+                        combo = 0;
                     }
                 }
 
@@ -95,17 +171,20 @@ void note_state_machine(struct Note notes[2000])
                         key_state[i] == 1)
                     {
                         notes[column_now_ptr[i]].score = SCORE_GOOD;
+                        combo++;
                     }
 
                     if (n - PERFECT <= time && time <= n + PERFECT &&
                         key_state[i] == 1)
                     {
                         notes[column_now_ptr[i]].score = SCORE_PERFECT;
+                        combo++;
                     }
 
                     if (n + PERFECT + GOOD < time)
                     {
                         notes[column_now_ptr[i]].score = SCORE_MISS;
+                        combo = 0;
                     }
                 }
 
@@ -130,15 +209,13 @@ void note_state_machine(struct Note notes[2000])
     }
 }
 
-
 void play(unsigned char *file_path)
 {
-    unsigned int key, column;
+    unsigned int column;
     int i;
     int chart_file;
     FONTCHARACTER casio_file_path[32];
     unsigned char chart_title[32], chart_artist[32];
-    unsigned char buffer[32];
     short chart_bpm, chart_note_num, song_length;
     short visible_note_start_ptr, visible_note_end_ptr;
 
@@ -250,6 +327,8 @@ void play(unsigned char *file_path)
     if (key == KEY_CTRL_EXIT)
         return;
 
+    select_speed();
+
 ////////////////
 // Game start //
 ////////////////
@@ -266,6 +345,8 @@ GAME_START:
     miss_count = 0;
     good_count = 0;
     perfect_count = 0;
+    combo = 0;
+    max_combo = 0;
 
     while (1)
     {
@@ -308,6 +389,7 @@ GAME_START:
                     1, ML_BLACK, ML_BLACK);
         }
 
+        // Display note score
         sprintf((char *)buffer, "P %d", perfect_count);
         locate(14, 2);
         Print(buffer);
@@ -317,13 +399,22 @@ GAME_START:
         sprintf((char *)buffer, "M %d", miss_count);
         locate(14, 4);
         Print(buffer);
+        if (combo >= 5)
+        {
+            locate(14, 6);
+            Print((unsigned char *)"COMBO");
+            locate(14, 7);
+            sprintf((char *)buffer, "[%d]", combo);
+            Print(buffer);
+        }
 
         draw_frame();
         draw_key_press_effect(key_state);
         note_state_machine(notes);
         draw_progress_bar(time, song_length);
 
-        // Scoring
+        if (combo > max_combo)
+            max_combo = combo;
 
         ML_display_vram();
         while (wait_frame)
@@ -332,6 +423,10 @@ GAME_START:
         KillTimer(1);
         time++;
 
+        if (time > song_length + 20 || IsKeyDown(KEY_CHAR_STORE)) // Game ends 0.5s after song ends
+            break;
+
+        // Pause
         if (IsKeyDown(KEY_CTRL_EXIT))
             switch (pause())
             {
@@ -347,4 +442,6 @@ GAME_START:
                 break;
             }
     }
+
+    display_result(chart_title);
 }

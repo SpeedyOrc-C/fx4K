@@ -109,6 +109,7 @@ Sublevel=1
 File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
 Line=275
 Flags=00001012
+Sublevel=1
 
 [Breakpoint]
 File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
@@ -120,6 +121,7 @@ Sublevel=2
 File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
 Line=288
 Flags=00001011
+Sublevel=1
 
 [Breakpoint]
 File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
@@ -142,5 +144,23 @@ Sublevel=4
 [Breakpoint]
 File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
 Line=270
+Flags=00001012
+Sublevel=2
+
+[Breakpoint]
+File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
+Line=288
+Flags=00001011
+Sublevel=2
+
+[Breakpoint]
+File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
+Line=288
+Flags=00001011
+Sublevel=3
+
+[Breakpoint]
+File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
+Line=275
 Flags=00001012
 Sublevel=2
