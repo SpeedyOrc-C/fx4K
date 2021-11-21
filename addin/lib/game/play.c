@@ -104,7 +104,7 @@ void display_result(unsigned char *chart_title)
     Print(&chart_title[21]);
 
     locate(1, 3);
-    Print((unsigned char*)"---------------------");
+    Print((unsigned char *)"---------------------");
 
     locate(1, 4);
     sprintf((char *)buffer, "ACCURACY : %.2f%%", accuracy);
@@ -140,13 +140,13 @@ void frame_timer()
 void note_state_machine(struct Note notes[2000])
 {
     unsigned char i, score;
-    unsigned short n;
+    unsigned short n, n2;
 
     for (i = 0; i < 4; i++)
     {
         if (column_now_ptr[i] != -1)
         {
-            if (notes[column_now_ptr[i]].type == 'C' || notes[column_now_ptr[i]].type == 'H') // Click
+            if (notes[column_now_ptr[i]].type == 'C') // Click
             {
                 n = notes[column_now_ptr[i]].start_time;
                 score = notes[column_now_ptr[i]].score;
@@ -204,6 +204,48 @@ void note_state_machine(struct Note notes[2000])
 
             if (notes[column_now_ptr[i]].type == 'H') // Hold
             {
+                n = notes[column_now_ptr[i]].start_time;
+                n2 = notes[column_now_ptr[i]].end_time;
+                score = notes[column_now_ptr[i]].score;
+
+                if (score == SCORE_NOT_RATED)
+                {
+                    if (n - PERFECT - GOOD <= time && time <= n + PERFECT + GOOD &&
+                        key_state[i] == 1)
+                        notes[column_now_ptr[i]].score = SCORE_RATE_READY;
+
+                    if (n + PERFECT + GOOD < time)
+                    {
+                        notes[column_now_ptr[i]].score = SCORE_MISS;
+                        combo = 0;
+                    }
+                }
+
+                if (score == SCORE_RATE_READY)
+                {
+                    if (time < n2 - PERFECT - GOOD &&
+                        key_state[i] == 0)
+                    {
+                        notes[column_now_ptr[i]].score = SCORE_MISS;
+                        combo++;
+                    }
+
+                    if (n2 - GOOD - PERFECT <= time && key_state[i] == 1)
+                    {
+                        notes[column_now_ptr[i]].score = SCORE_PERFECT;
+                        combo = 0;
+                    }
+                }
+
+                if (notes[column_now_ptr[i]].score == SCORE_MISS ||
+                    notes[column_now_ptr[i]].score == SCORE_PERFECT)
+                {
+                    if (notes[column_now_ptr[i]].score == SCORE_MISS)
+                        miss_count++;
+                    if (notes[column_now_ptr[i]].score == SCORE_PERFECT)
+                        perfect_count++;
+                    column_now_ptr[i] = notes[column_now_ptr[i]].next;
+                }
             }
         }
     }
@@ -360,7 +402,7 @@ GAME_START:
         key_state[2] = IsKeyDown(KEY_CTRL_DEL);
         key_state[3] = IsKeyDown(KEY_CTRL_AC);
 
-        // Adding notes that appears in the view
+        // Adding notes that appears
         while (visible_note_end_ptr < chart_note_num - 1 &&
                notes[visible_note_end_ptr + 1].start_time - VISIBLE <= time)
             visible_note_end_ptr++;
@@ -369,7 +411,7 @@ GAME_START:
         while (notes[visible_note_start_ptr].start_time + DISAPPEAR < time)
             visible_note_start_ptr++;
 
-        // Display notes
+        // Draw notes
         for (i = visible_note_start_ptr; i <= visible_note_end_ptr; i++)
         {
             if (notes[i].type == 'C') // Click
@@ -417,7 +459,7 @@ GAME_START:
             max_combo = combo;
 
         ML_display_vram();
-        while (wait_frame)
+        while (wait_frame) // Wait until next frame
         {
         }
         KillTimer(1);

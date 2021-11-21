@@ -33,7 +33,7 @@ void about()
             locate(3, 5);
             Print((unsigned char*)"1670732206@qq.com");
             locate(7, 7);
-            Print((unsigned char*)"fx4K v0.1");
+            Print((unsigned char*)"fx4K v0.3");
             locate(19, 8);
             Print((unsigned char*)"2/2");
         }

@@ -1,6 +1,6 @@
 [DLSimProject]
 Name=fx4K
-Version=00.02.0000
+Version=00.03.0000
 Model=:fx-9860G.dlm
 SourcePath=SRC
 MemoryPath=INIT
