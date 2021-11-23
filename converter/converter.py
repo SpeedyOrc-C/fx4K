@@ -54,7 +54,9 @@ def note_bytes(note: dict, bpm: int) -> bytes:
 def main():
 
     try:
-        with open(get_path('Malody 铺面路径(可拖拽至此): '), 'r') as malody_chart_raw:
+        with open(get_path(
+            'Malody 铺面路径(可拖拽至此)\nMalody chart path (or drag and drop)\n'
+            ), 'r') as malody_chart_raw:
             try:
                 malody_chart = loads(malody_chart_raw.read())
                 malody_title = malody_chart['meta']['song']['title']
@@ -68,21 +70,23 @@ def main():
                         note['sound']
                         malody_note_count -= 1
                     except: pass
-                print('标题: %s\n艺人: %s\nBPM : %.2f\n物量: %d' % (
+                print('标题 Title: %s\n艺人 Artist: %s\nBPM : %.2f\n物量 Note Count: %d' % (
                     malody_title, malody_artist, malody_bpm, malody_note_count))
             except:
-                print('铺面已损坏')
+                print('铺面已损坏 Chart is corrupted.')
                 return
     except:
-        print('文件不存在')
+        print('文件不存在 File does not exist.')
         return
 
-    with open(input('输出文件名(只能为八个大写字母): '), 'wb') as fx4k_chart_raw:
+    with open(input(
+        '输出文件名(最多八个字母)\nOutput file name (Maximum 8 Latin letters)\n'
+        ), 'wb') as fx4k_chart_raw:
         try:
             fx4k_title = str_32_bytes(malody_title)
             fx4k_artist = str_32_bytes(malody_artist)
         except:
-            print('铺面名称只能包含ASCII字符')
+            print('铺面名称只能包含ASCII字符 Only ASCII character is allowed.')
             return
         fx4k_bpm = short_bytes(malody_bpm)
         fx4k_note_count = short_bytes(malody_note_count)
@@ -112,7 +116,7 @@ def main():
             note_raw = note_bytes(note, malody_bpm)
             fx4k_chart_raw.write(note_raw)
 
-        print('时长: %d' % duration)
+        print('时长 Duration: %d' % duration)
         fx4k_chart_raw.seek(0x44)
         fx4k_chart_raw.write(short_bytes(duration))
 
