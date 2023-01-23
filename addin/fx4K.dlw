@@ -2,31 +2,31 @@
 
 [_1]
 Type=5
-Order=2
+Order=3
 Top=15
 Left=2235
 Height=4740
 Width=5565
 State=0
 Flags=00000020
-Setting=135:1:lib\game\play.c
+Setting=127:1:src\FxNeue.c
 OptionA=0
 
 [_2]
 Type=1
-Order=7
+Order=8
 Top=15
 Left=7800
-Height=4740
+Height=4725
 Width=5535
 State=0
-Flags=00000001
+Flags=00000000
 OptionA=15
 OptionB=15
 
 [_3]
 Type=6
-Order=3
+Order=4
 Top=4740
 Left=7800
 Height=6390
@@ -37,21 +37,21 @@ OptionA=0
 
 [_4]
 Type=7
-Order=4
-Top=0
-Left=13320
-Height=14040
+Order=10
+Top=4740
+Left=2220
+Height=3165
 Width=5565
-State=0
+State=16
 Flags=00000000
 OptionA=0
 
 [_5]
 Type=8
-Order=5
-Top=-60
-Left=18900
-Height=14130
+Order=1
+Top=4785
+Left=2220
+Height=6345
 Width=5580
 State=0
 Flags=00000000
@@ -59,7 +59,7 @@ OptionA=0
 
 [_6]
 Type=3
-Order=10
+Order=13
 Top=0
 Left=10788
 Height=6348
@@ -70,9 +70,9 @@ OptionA=0
 
 [_7]
 Type=2
-Order=9
-Top=10455
-Left=2385
+Order=12
+Top=6345
+Left=7800
 Height=3585
 Width=5220
 State=16
@@ -81,7 +81,7 @@ OptionA=0
 
 [_8]
 Type=17
-Order=1
+Order=7
 Top=15
 Left=-15
 Height=11115
@@ -92,13 +92,47 @@ OptionA=0
 
 [_9]
 Type=15
-Order=0
+Order=5
 Top=4740
 Left=2235
 Height=6345
-Width=5595
+Width=5580
 State=0
 Flags=00000000
+OptionA=0
+
+[_10]
+Type=11
+Order=11
+Top=1950
+Left=1950
+Height=8550
+Width=19080
+State=16
+Flags=00000020
+OptionA=0
+
+[_11]
+Type=9
+Order=2
+Top=5100
+Left=2355
+Height=8550
+Width=19080
+State=16
+Flags=00000020
+Setting=80000000:88023DF0:88023E31:ShowMultiplePagesText:pages
+OptionA=0
+
+[_12]
+Type=14
+Order=0
+Top=5115
+Left=13830
+Height=6360
+Width=6435
+State=0
+Flags=00000020
 OptionA=0
 
 [_32]
@@ -106,21 +140,21 @@ Type=16
 Order=6
 Top=0
 Left=2205
-Height=4725
+Height=4590
 Width=5595
 State=0
 Flags=00000020
-Setting=34:1:lib\game\play.c
+Setting=114:1:src\FxNeue.c
 OptionA=0
 
 [_33]
 Type=16
-Order=8
-Top=2310
-Left=2310
-Height=9435
-Width=8760
+Order=9
+Top=1560
+Left=1560
+Height=8550
+Width=19080
 State=16
 Flags=00000020
-Setting=1:1:lib\game\select.c
+Setting=1:1:src\FxNeue.h
 OptionA=0

@@ -1,166 +1,51 @@
 [DLSimRunSpace]
 
 [Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=75
-Flags=00001072
-Sublevel=1
+File=C:\Users\³ÂÕ¿Ã÷\Documents\GitHub\fx4K\addin\src\FxNeue.c
+Line=40
+Flags=00001012
 
 [Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=75
-Flags=00001072
-Sublevel=2
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=92
+File=C:\Users\³ÂÕ¿Ã÷\Documents\GitHub\fx4K\addin\src\FxNeue.c
+Line=47
 Flags=00001012
 Sublevel=1
 
 [Breakpoint]
-Address=80000000:88020030
-Count=00003E80
-Name=play:notes
-Flags=00000042
+File=C:\Users\³ÂÕ¿Ã÷\Documents\GitHub\fx4K\addin\src\fx4K.c
+Line=169
+Flags=00001012
 
 [Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=138
+File=C:\Users\³ÂÕ¿Ã÷\Documents\GitHub\fx4K\addin\src\fx4K.c
+Line=161
 Flags=00001012
 Sublevel=1
 
 [Breakpoint]
-Address=80000000:88021628
-Count=00000008
-Name=play:notes[705]
-Flags=00000042
-
-[Breakpoint]
-Address=80000000:88020020
-Count=00003E80
-Name=play:notes
-Flags=00000042
-
-[Breakpoint]
-Address=80000000:88023EA8
-Count=00000008
-Name=play:column_start_ptr
-Flags=00000042
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=39
-Flags=00001012
-Sublevel=1
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=92
+File=C:\Users\³ÂÕ¿Ã÷\Documents\GitHub\fx4K\addin\src\fx4K.c
+Line=161
 Flags=00001012
 Sublevel=2
 
 [Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=138
+File=C:\Users\³ÂÕ¿Ã÷\Documents\GitHub\fx4K\addin\src\FxNeue.c
+Line=47
 Flags=00001012
 Sublevel=2
 
 [Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=197
-Flags=00001011
-Sublevel=1
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\logic.c
-Line=65
-Flags=00001012
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\logic.c
-Line=70
+File=C:\Users\³ÂÕ¿Ã÷\Documents\GitHub\fx4K\addin\src\FxNeue.c
+Line=113
 Flags=00001010
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=63
-Flags=00001012
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=33
-Flags=00001012
 Sublevel=1
 
 [Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=33
-Flags=00001012
+File=C:\Users\³ÂÕ¿Ã÷\Documents\GitHub\fx4K\addin\src\FxNeue.c
+Line=113
+Flags=00001010
 Sublevel=2
 
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=270
-Flags=00001012
-Sublevel=1
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=275
-Flags=00001012
-Sublevel=1
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=197
-Flags=00001011
-Sublevel=2
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=288
-Flags=00001011
-Sublevel=1
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=39
-Flags=00001012
-Sublevel=2
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=39
-Flags=00001012
-Sublevel=3
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=39
-Flags=00001012
-Sublevel=4
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=270
-Flags=00001012
-Sublevel=2
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=288
-Flags=00001011
-Sublevel=2
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=288
-Flags=00001011
-Sublevel=3
-
-[Breakpoint]
-File=C:\users\crossover\My Documents\GitHub\fx4K\addin\lib\game\play.c
-Line=275
-Flags=00001012
-Sublevel=2
+[Watch]
+Name=path
+Name=pages[2]

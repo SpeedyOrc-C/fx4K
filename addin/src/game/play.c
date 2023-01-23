@@ -1,7 +1,7 @@
 #include "../MonochromeLib.h"
-#include "../../fxlib.h"
+#include "fxlib.h"
 #include "stdio.h"
-#include "stdlib.h"
+#include <stdlib.h>
 
 #include "play.h"
 #include "graphics.h"

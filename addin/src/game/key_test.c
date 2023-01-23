@@ -1,6 +1,6 @@
 #include "key_test.h"
 #include "../MonochromeLib.h"
-#include "../../fxlib.h"
+#include "fxlib.h"
 
 void key_test()
 {

@@ -1,5 +1,5 @@
 #include "../MonochromeLib.h"
-#include "../../fxlib.h"
+#include "fxlib.h"
 
 #include "select.h"
 

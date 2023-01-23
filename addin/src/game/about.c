@@ -1,13 +1,13 @@
 #include "about.h"
 #include "../MonochromeLib.h"
-#include "../../fxlib.h"
+#include "fxlib.h"
+#include "../FxNeue.h"
 
 void about()
 {
     unsigned int key;
     unsigned char page;
     
-    page = 0;
     while (1)
     {
         ML_clear_vram();

@@ -1,6 +1,5 @@
 #include "../MonochromeLib.h"
-#include "../../fxlib.h"
-
+#include "fxlib.h"
 #include "select.h"
 #include "play.h"
 #include "key_test.h"
