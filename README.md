@@ -2,6 +2,8 @@
 
 **简体中文** - [English](README_en.md)
 
+**该项目已经过重写以适配所有机型，请移步至 [fxTap](https://github.com/SpeedyOrc-C/fxTap)。**
+
 ## 简介
 
 运行在卡西欧 fx-9750 与 fx-9860 系列图形计算器上的4K（四按键）下落式音游。
