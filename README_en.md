@@ -2,6 +2,8 @@
 
 [简体中文](README.md) - **English**
 
+**This project has been reimplemented. Please go to [fxTap](https://github.com/SpeedyOrc-C/fxTap).**
+
 ## Introduction
 
 This is a 4K (four keys) rhythm game on Casio calculators fx-9750, fx-9860 and its series. 
